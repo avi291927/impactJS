@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventChain - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel - Branding -->
+        <div class="left-panel">
+            <div class="branding">
+                <div class="logo">
+                    <i class="fas fa-cube"></i>
+                    <h1>EventChain</h1>
+                </div>
+                <p class="tagline">Blockchain-Powered Event & Club Management</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Blockchain Records</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Smart Event Management</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <span>Club Collaboration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Login Form -->
+        <div class="right-panel">
+            <div class="login-container">
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Sign in to manage your events</p>
+
+                <!-- Email Input Form -->
+                <form id="emailForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email Address
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <span>Send OTP</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <!-- OTP Verification Form (Hidden Initially) -->
+                <form id="otpForm" class="auth-form hidden">
+                    <div class="otp-sent-message">
+                        <i class="fas fa-check-circle"></i>
+                        <p>OTP sent to <strong id="displayEmail"></strong></p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="otp">
+                            <i class="fas fa-key"></i>
+                            Enter OTP
+                        </label>
+                        <div class="otp-input-group">
+                            <input type="text" maxlength="1" class="otp-input" />
+                            <input type="text" maxlength="1" class="otp-input" />
+                            <input type="text" maxlength="1" class="otp-input" />
+                            <input type="text" maxlength="1" class="otp-input" />
+                            <input type="text" maxlength="1" class="otp-input" />
+                            <input type="text" maxlength="1" class="otp-input" />
+                        </div>
+                    </div>
+
+                    <div class="otp-actions">
+                        <button type="button" id="resendOtp" class="btn-link">
+                            <i class="fas fa-redo"></i> Resend OTP
+                        </button>
+                        <span class="timer" id="timer">60s</span>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <span>Verify & Login</span>
+                        <i class="fas fa-sign-in-alt"></i>
+                    </button>
+
+                    <button type="button" id="changeEmail" class="btn-secondary">
+                        <i class="fas fa-edit"></i>
+                        Change Email
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="btn-social google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="btn-social github">
+                        <i class="fab fa-github"></i>
+                        Continue with GitHub
+                    </button>
+                </div>
+
+                <p class="signup-link">
+                    Don't have an account? <a href="#" id="signupLink">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="spinner-overlay hidden">
+        <div class="spinner">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
